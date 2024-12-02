@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chaton index{% endblock %}
+
+{% block body %}
+    <h1>Chaton index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Photo</th>
+                <th>Nom</th>
+                <th>DateDeNaissance</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chaton in chatons %}
+            <tr>
+                <td>{{ chaton.id }}</td>
+                <td>{{ chaton.Photo }}</td>
+                <td>{{ chaton.Nom }}</td>
+                <td>{{ chaton.DateDeNaissance ? chaton.DateDeNaissance|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_chaton_show', {'id': chaton.id}) }}">show</a>
+                    <a href="{{ path('app_chaton_edit', {'id': chaton.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chaton_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Êtes vous sûr de supprimer cet catégorie ?{% endblock %}
+
+{% block body %}
+
+    <h1>Êtes vous sûr de supprimer cet catégorie ?</h1>
+
+    <form method="post">
+        {{ form(form) }} <a href="{{ path('app_home') }}" class="btn btn-primary">Annuler</a>
+    </form>
+
+{% endblock %}
+

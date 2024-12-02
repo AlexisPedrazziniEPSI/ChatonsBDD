@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chaton{% endblock %}
+
+{% block body %}
+    <h1>Chaton</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chaton.id }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><img src="{{ asset('images/' ~ chaton.Photo) }}" alt="{{ chaton.Photo }}" /></td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ chaton.Nom }}</td>
+            </tr>
+            <tr>
+                <th>DateDeNaissance</th>
+                <td>{{ chaton.DateDeNaissance ? chaton.DateDeNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chaton_index') }}">back to list</a>
+
+    <a href="{{ path('app_chaton_edit', {'id': chaton.id}) }}">edit</a>
+
+    {{ include('chaton/_delete_form.html.twig') }}
+{% endblock %}
